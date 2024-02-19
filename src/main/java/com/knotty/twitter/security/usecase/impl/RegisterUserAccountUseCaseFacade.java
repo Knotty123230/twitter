@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class RegisterUserAccountUseCaseFacade implements RegisterUserAccountUseCase {
     private final UserAccountService userAccountService;
     private final RegisterRequestToUserAccountMapper registerRequestToUserAccountMapper;
+
     @Override
     public void register(RegisterRequest registerRequest) {
         UserAccount userAccount = registerRequestToUserAccountMapper.map(registerRequest);

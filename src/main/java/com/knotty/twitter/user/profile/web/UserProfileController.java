@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/user-profiles")
 @RequiredArgsConstructor
-public class UserProfileController  {
+public class UserProfileController {
     private final UserProfileCreateUseCase userProfileCreateUseCase;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUserProfile(@RequestBody @Valid UserProfileRequest userProfileRequest){
+    public void createUserProfile(@RequestBody @Valid UserProfileRequest userProfileRequest) {
         userProfileCreateUseCase.createUserProfile(userProfileRequest);
     }
 }

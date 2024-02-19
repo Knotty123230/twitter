@@ -12,6 +12,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserRoleServiceImpl implements UserRoleService {
     private final UserRoleRepository userRoleRepository;
+
     @Override
     public Optional<UserRole> findUserRole() {
         return userRoleRepository.findByAuthority("ROLE_USER");

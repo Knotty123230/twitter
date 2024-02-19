@@ -17,6 +17,7 @@ import java.util.Set;
 public class RegisterRequestToUserAccountMapperImpl implements RegisterRequestToUserAccountMapper {
     private final UserRoleService userRoleService;
     private final PasswordEncoder passwordEncoder;
+
     @Override
     public UserAccount map(RegisterRequest registerRequest) {
         UserAccount userAccount = new UserAccount();

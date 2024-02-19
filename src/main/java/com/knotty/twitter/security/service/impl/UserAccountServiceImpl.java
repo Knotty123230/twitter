@@ -20,7 +20,7 @@ public class UserAccountServiceImpl implements UserAccountService {
             throw new RuntimeException("Account with this username already exists");
         }
 
-            userAccountRepository.save(userAccount);
+        userAccountRepository.save(userAccount);
     }
 
     @Override

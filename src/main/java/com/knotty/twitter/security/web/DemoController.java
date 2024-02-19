@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/demo")
 public class DemoController {
     @GetMapping("/just-auth")
-    public String auth(){
+    public String auth() {
         return "this is protected";
     }
+
     @GetMapping("/just-role-user")
-    public String authUser(){
+    public String authUser() {
         return "this is user";
     }
+
     @GetMapping("/just-role-admin")
-    public String authAdmin(){
+    public String authAdmin() {
         return "this is admin";
     }
 }

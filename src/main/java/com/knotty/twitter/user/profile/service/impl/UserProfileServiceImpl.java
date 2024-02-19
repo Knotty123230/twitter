@@ -15,11 +15,11 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public void createUserProfile(UserProfile userProfile) {
-        if (userProfileRepository.existsById(userProfile.getId())){
+        if (userProfileRepository.existsById(userProfile.getId())) {
             String errorMessage = "Профіль користувача з таким id %s уже був створений".formatted(userProfile.getId());
             throw new RuntimeException(errorMessage);
         }
-        if (userProfileRepository.existsByNickname(userProfile.getNickname())){
+        if (userProfileRepository.existsByNickname(userProfile.getNickname())) {
             throw new RuntimeException("профіль з таким нікнеймом %s уже існує".formatted(userProfile.getNickname()));
         }
         userProfileRepository.save(userProfile);

@@ -1,6 +1,6 @@
 --liquibase formatted sql
 
---changeset SergeyLabuzov:create-twitter-user_profiles-table
+--changeset VitaliyTaranenko:create-twitter-user_profiles-table
 --comment create table twitter.user_profiles
 create table twitter.user_profiles
 (
@@ -10,7 +10,7 @@ create table twitter.user_profiles
 );
 --rollback drop table twitter.user_profiles;
 
---changeset SergeyLabuzov:add-twitter-user_profiles-table-constraints
+--changeset VitaliyTaranenko:add-twitter-user_profiles-table-constraints
 --comment add constraints to twitter.user_profiles table
 alter table twitter.user_profiles
     add constraint user_profiles__user_accounts__fk

@@ -3,20 +3,20 @@
 --changeset VitaliyTaranenko:create-identity-schema
 --comment: create identity schema
 
-CREATE SCHEMA  identity
+CREATE SCHEMA identity
 --rollback DROP SCHEMA identity
 
 
 
 
 --changeset VitaliyTaranenko:create-user_accounts-table
---comment: create user_accounts table
+--comment: createuser_accounts table
 
-CREATE TABLE  identity.user_accounts
+CREATE TABLE identity.user_accounts
 (
-    id       serial PRIMARY KEY ,
+    id       serial PRIMARY KEY,
     username VARCHAR(255) unique NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255)        NOT NULL
 )
 --rollback DROP TABLE identity.user_account
 
@@ -24,10 +24,10 @@ CREATE TABLE  identity.user_accounts
 
 --changeset VitaliyTaranenko:create-user_roles-table
 --comment: create user_roles table
-CREATE TABLE  identity.user_roles
+CREATE TABLE identity.user_roles
 (
-    id       serial PRIMARY KEY,
-    authority     VARCHAR(255) NOT NULL
+    id        serial PRIMARY KEY,
+    authority VARCHAR(255) NOT NULL
 )
 --rollback DROP TABLE identity.user_roles
 
@@ -35,10 +35,10 @@ CREATE TABLE  identity.user_roles
 
 --changeset VitaliyTaranenko:create-user_account_roles-table
 --comment: create user_accounts_roles table
-CREATE TABLE  identity.user_accounts_roles
+CREATE TABLE identity.user_accounts_roles
 (
-    user_account_id INTEGER not null ,
-    user_role_id         INTEGER not null
+    user_account_id INTEGER not null,
+    user_role_id    INTEGER not null
 )
 --rollback DROP TABLE identity.user_account_roles
 
@@ -62,5 +62,7 @@ ALTER TABLE identity.user_accounts_roles
 
 --changeset VitaliyTaranenko:add-data-to-user_account-roles-table
 --comment add data to user_accounts_roles table
-INSERT INTO identity.user_roles (authority) VALUES ('ROLE_USER'), ('ROLE_ADMIN');
+INSERT INTO identity.user_roles (authority)
+VALUES ('ROLE_USER'),
+       ('ROLE_ADMIN');
 --rollback TRUNCATE TABLE identity.user_roles

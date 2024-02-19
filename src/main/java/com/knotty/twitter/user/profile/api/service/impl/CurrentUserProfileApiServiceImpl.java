@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class CurrentUserProfileApiServiceImpl implements CurrentUserProfileApiService {
     private final IdentityApiService identityApiService;
     private final UserProfileService userProfileService;
+
     @Override
     public UserProfile currentUserProfile() {
         CurrentUserApiModel currentUserApiModel = identityApiService.currentUserAccount().orElseThrow(() -> new RuntimeException("користувач повинен бути авторизований"));
