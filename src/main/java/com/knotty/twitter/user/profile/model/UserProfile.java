@@ -15,4 +15,18 @@ public class UserProfile {
     private String nickname;
     @Column(nullable = false)
     private String imageLink;
+
+    public UserProfile(String nickname, String imageLink) {
+        this.nickname = nickname;
+        this.imageLink = imageLink;
+    }
+
+    public UserProfile(Long id, String nickname, String imageLink) {
+        this.id = id;
+        this.nickname = nickname;
+        this.imageLink = imageLink;
+    }
+
+    public UserProfile() {
+    }
 }
