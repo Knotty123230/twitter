@@ -1,6 +1,6 @@
 package com.knotty.twitter.user.tweet.mapper.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.user.tweet.mapper.TweetEditRequestToTweetMapper;
 import com.knotty.twitter.user.tweet.model.Tweet;
 import com.knotty.twitter.user.tweet.service.TweetService;

@@ -1,4 +1,4 @@
-package com.knotty.twitter.common;
+package com.knotty.twitter.common.exception;
 
 public class TwitterException extends RuntimeException{
     public TwitterException(String message) {

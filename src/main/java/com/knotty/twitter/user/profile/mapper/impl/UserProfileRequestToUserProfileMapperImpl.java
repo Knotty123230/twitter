@@ -1,6 +1,6 @@
 package com.knotty.twitter.user.profile.mapper.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.security.api.model.CurrentUserApiModel;
 import com.knotty.twitter.security.api.service.IdentityApiService;
 import com.knotty.twitter.user.profile.mapper.UserProfileRequestToUserProfileMapper;

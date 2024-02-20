@@ -1,6 +1,6 @@
 package com.knotty.twitter.user.tweet.usecase.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.user.profile.api.service.CurrentUserProfileApiService;
 import com.knotty.twitter.user.profile.model.UserProfile;
 import com.knotty.twitter.user.tweet.mapper.TweetEditRequestToTweetMapper;

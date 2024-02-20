@@ -1,6 +1,6 @@
 package com.knotty.twitter.security.mapper.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.security.mapper.RegisterRequestToUserAccountMapper;
 import com.knotty.twitter.security.model.UserAccount;
 import com.knotty.twitter.security.model.UserRole;

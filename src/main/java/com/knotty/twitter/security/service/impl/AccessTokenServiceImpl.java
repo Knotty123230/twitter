@@ -1,6 +1,6 @@
 package com.knotty.twitter.security.service.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.security.service.AccessTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

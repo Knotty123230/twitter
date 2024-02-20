@@ -1,6 +1,6 @@
 package com.knotty.twitter.user.subscription.usecase.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.user.subscription.mapper.SubscribeRequestToSubscriptionMapper;
 import com.knotty.twitter.user.subscription.model.Subscription;
 import com.knotty.twitter.user.subscription.service.SubscriptionService;

@@ -1,6 +1,6 @@
 package com.knotty.twitter.security.service.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.security.model.UserAccount;
 import com.knotty.twitter.security.repository.UserAccountRepository;
 import com.knotty.twitter.security.service.UserAccountService;

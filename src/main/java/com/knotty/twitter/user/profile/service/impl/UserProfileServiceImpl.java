@@ -1,6 +1,6 @@
 package com.knotty.twitter.user.profile.service.impl;
 
-import com.knotty.twitter.common.TwitterException;
+import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.user.profile.model.UserProfile;
 import com.knotty.twitter.user.profile.repository.UserProfileRepository;
 import com.knotty.twitter.user.profile.service.UserProfileService;
