@@ -5,9 +5,10 @@ import com.knotty.twitter.user.tweet.model.Tweet;
 import com.knotty.twitter.user.tweet.repository.TweetRepository;
 import com.knotty.twitter.user.tweet.service.TweetService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -38,8 +39,8 @@ public class TweetServiceImpl implements TweetService {
 
 
     @Override
-    public Collection<Tweet> findAllTweets(UserProfile userProfile) {
-        return tweetRepository.findAllByUserProfile(userProfile);
+    public Page<Tweet> findAllTweets(UserProfile userProfile, Pageable pageable) {
+        return tweetRepository.findAllByUserProfile(userProfile, pageable);
 
     }
 }

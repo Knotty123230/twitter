@@ -6,8 +6,6 @@ import com.knotty.twitter.user.profile.service.UserProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class UserProfileServiceImpl implements UserProfileService {
@@ -26,7 +24,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public Optional<UserProfile> findUserProfileById(Long userProfileId) {
-        return userProfileRepository.findById(userProfileId);
+    public UserProfile findUserProfileById(Long userProfileId) {
+        return userProfileRepository.findById(userProfileId).orElseThrow(() -> new RuntimeException("профіля користувача з айді %s не існує".formatted(userProfileId)));
     }
 }

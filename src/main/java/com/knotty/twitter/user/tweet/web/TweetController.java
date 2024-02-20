@@ -4,15 +4,12 @@ import com.knotty.twitter.user.tweet.usecase.TweetAddUseCase;
 import com.knotty.twitter.user.tweet.usecase.TweetDeleteUseCase;
 import com.knotty.twitter.user.tweet.usecase.TweetEditUseCase;
 import com.knotty.twitter.user.tweet.usecase.TweetFindUseCase;
-import com.knotty.twitter.user.tweet.web.dto.TweetAddRequest;
-import com.knotty.twitter.user.tweet.web.dto.TweetEditRequest;
-import com.knotty.twitter.user.tweet.web.dto.TweetResponse;
+import com.knotty.twitter.user.tweet.web.dto.*;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/v1/tweets")
@@ -38,8 +35,10 @@ public class TweetController {
     public void deleteTweet(@PathVariable Long tweetId) {
         deleteUseCase.deleteTweet(tweetId);
     }
+
     @GetMapping
-    public Collection<TweetResponse> findOwnerTweets(){
-        return this.tweetFindUseCase.findTweets();
+    public TweetPageResponse findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
+        TweetFindRequest tweetFindRequest = new TweetFindRequest(page, limit);
+        return this.tweetFindUseCase.findTweets(tweetFindRequest);
     }
 }

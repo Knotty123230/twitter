@@ -1,9 +1,11 @@
 package com.knotty.twitter.user.tweet.usecase;
 
-import com.knotty.twitter.user.tweet.web.dto.TweetResponse;
+import com.knotty.twitter.user.tweet.web.dto.TweetFindRequest;
+import com.knotty.twitter.user.tweet.web.dto.TweetPageResponse;
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
 
-import java.util.Collection;
-
+@Validated
 public interface TweetFindUseCase {
-    Collection<TweetResponse> findTweets();
+    TweetPageResponse findTweets(@Valid TweetFindRequest tweetFindRequest);
 }
