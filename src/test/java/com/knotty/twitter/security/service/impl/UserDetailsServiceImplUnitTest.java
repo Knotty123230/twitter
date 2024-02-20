@@ -1,6 +1,5 @@
 package com.knotty.twitter.security.service.impl;
 
-import com.knotty.twitter.common.exception.TwitterException;
 import com.knotty.twitter.security.mapper.UserAccountToUserMapper;
 import com.knotty.twitter.security.model.UserAccount;
 import com.knotty.twitter.security.model.UserRole;
@@ -18,8 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Collections;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
@@ -58,6 +56,7 @@ class UserDetailsServiceImplUnitTest {
 
     @Test
     void shouldThrowUserNotFoundException() {
+        // Setup
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername("user@gmail.com");
         userAccount.setPassword("password");
@@ -65,12 +64,20 @@ class UserDetailsServiceImplUnitTest {
         userRole.setAuthority("ROLE_USER");
         userAccount.setUserRoles(Collections.singleton(userRole));
 
-        Mockito.when(userAccountService.findUserByUsername(userAccount.getUsername())).thenReturn(Optional.empty());
+        // Mocking behavior
+        Mockito.when(userAccountService.findUserByUsername(userAccount.getUsername()))
+                .thenReturn(Optional.empty());
+            String username = userAccount.getUsername();
+        try {
+            userDetailsService.loadUserByUsername(username);
+            fail("Expected UsernameNotFoundException to be thrown");
+        } catch (UsernameNotFoundException ex) {
 
-        assertThrows(UsernameNotFoundException.class, () -> userDetailsService.loadUserByUsername(userAccount.getUsername()));
-
-        Mockito.verify(userAccountService, Mockito.times(1)).findUserByUsername(any());
-
-        Mockito.verify(userMapper, Mockito.never()).map(any());
+            Mockito.verify(userAccountService, Mockito.times(1))
+                    .findUserByUsername(any());
+            Mockito.verify(userMapper, Mockito.never())
+                    .map(any());
+        }
     }
+
 }
