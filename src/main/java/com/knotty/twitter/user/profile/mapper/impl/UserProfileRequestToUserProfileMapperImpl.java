@@ -1,5 +1,6 @@
 package com.knotty.twitter.user.profile.mapper.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.security.api.model.CurrentUserApiModel;
 import com.knotty.twitter.security.api.service.IdentityApiService;
 import com.knotty.twitter.user.profile.mapper.UserProfileRequestToUserProfileMapper;
@@ -17,7 +18,7 @@ public class UserProfileRequestToUserProfileMapperImpl implements UserProfileReq
     public UserProfile map(UserProfileRequest source) {
         CurrentUserApiModel currentUserApiModel = this.identityApiService.currentUserAccount()
                 .orElseThrow(
-                        () -> new RuntimeException("для створення профіля користувач має бути авторизований в системі")
+                        () -> new TwitterException("для створення профіля користувач має бути авторизований в системі")
                 );
 
         return new UserProfile(currentUserApiModel.userAccountId(), source.nickname(), source.imageLink());

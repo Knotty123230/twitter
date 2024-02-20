@@ -8,3 +8,7 @@ services:
       POSTGRES_DB: twitter
     ports:
       - "54321:5432"
+  sonarqube:
+    image: sonarqube:10.2.1-community
+    ports:
+      - "9000:9000"

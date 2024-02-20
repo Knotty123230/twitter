@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class UnsubscribeRequestToSubscriptionMapperImpl implements UnsubscribeRequestToSubscriptionMapper {
     private final CurrentUserProfileApiService currentUserProfileApiService;
     private final UserProfileApiService userProfileApiService;
+
     @Override
     public Subscription map(UnsubscribeRequest source) {
         Subscription subscription = new Subscription();

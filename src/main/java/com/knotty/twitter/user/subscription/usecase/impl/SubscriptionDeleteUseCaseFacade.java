@@ -1,5 +1,6 @@
 package com.knotty.twitter.user.subscription.usecase.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.user.profile.model.UserProfile;
 import com.knotty.twitter.user.subscription.mapper.UnsubscribeRequestToSubscriptionMapper;
 import com.knotty.twitter.user.subscription.model.Subscription;
@@ -14,16 +15,17 @@ import org.springframework.stereotype.Component;
 public class SubscriptionDeleteUseCaseFacade implements SubscriptionDeleteUseCase {
     private final UnsubscribeRequestToSubscriptionMapper unsubscribeRequestToSubscriptionMapper;
     private final SubscriptionService subscriptionService;
+
     @Override
     public void unsubscribe(UnsubscribeRequest unsubscribeRequest) {
         Subscription subscription = unsubscribeRequestToSubscriptionMapper.map(unsubscribeRequest);
         UserProfile follower = subscription.getFollower();
         UserProfile followed = subscription.getFollowed();
-        if (follower.equals(followed)){
-            throw new RuntimeException("користувач не може відписатись сам від себе");
+        if (follower.equals(followed)) {
+            throw new TwitterException("користувач не може відписатись сам від себе");
         }
         if (!subscriptionService.existsSubscription(subscription)) {
-            throw new RuntimeException("ви не були підписані на %s".formatted(followed.getNickname()));
+            throw new TwitterException("ви не були підписані на %s".formatted(followed.getNickname()));
         }
         this.subscriptionService.deleteSubscribe(subscription);
 

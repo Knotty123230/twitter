@@ -2,7 +2,19 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.2'
     id 'io.spring.dependency-management' version '1.1.4'
+    id "org.sonarqube" version "4.4.1.3373"
+    id 'jacoco'
 }
+
+
+sonar {
+    properties {
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.token", "sqp_be385413c59387daf03566fb7eef22fc5500b428"
+    }
+}
+
+
 
 group = 'com.knotty'
 version = '0.0.1-SNAPSHOT'
@@ -39,4 +51,10 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+    dependsOn test
 }

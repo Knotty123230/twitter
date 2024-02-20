@@ -1,5 +1,6 @@
 package com.knotty.twitter.security.service.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.security.model.UserAccount;
 import com.knotty.twitter.security.repository.UserAccountRepository;
 import com.knotty.twitter.security.service.UserAccountService;
@@ -17,7 +18,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     public void createUserAccount(UserAccount userAccount) {
         boolean existsByUsername = this.userAccountRepository.existsByUsername(userAccount.getUsername());
         if (existsByUsername) {
-            throw new RuntimeException("Account with this username already exists");
+            throw new TwitterException("Account with this username already exists");
         }
 
         userAccountRepository.save(userAccount);

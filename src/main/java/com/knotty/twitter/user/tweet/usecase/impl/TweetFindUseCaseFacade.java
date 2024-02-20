@@ -29,8 +29,8 @@ public class TweetFindUseCaseFacade implements TweetFindUseCase {
     public TweetPageResponse findTweets(TweetFindRequest tweetFindRequest) {
         UserProfile currentUserProfile = currentUserProfileApiService.currentUserProfile();
         Sort sort = Sort.by(Sort.Direction.DESC, CREATED_TIMESTAMP);
-        Pageable pageable = PageRequest.of(tweetFindRequest.page(), tweetFindRequest.limit(),sort);
-        Page<Tweet> allOwnerTweets = this.tweetService.findAllTweets(currentUserProfile,pageable);
+        Pageable pageable = PageRequest.of(tweetFindRequest.page(), tweetFindRequest.limit(), sort);
+        Page<Tweet> allOwnerTweets = this.tweetService.findAllTweets(currentUserProfile, pageable);
         return this.tweetPageToTweetPageResponseMapper.map(allOwnerTweets);
 
     }

@@ -1,5 +1,6 @@
 package com.knotty.twitter.user.tweet.usecase.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.user.profile.api.service.CurrentUserProfileApiService;
 import com.knotty.twitter.user.profile.model.UserProfile;
 import com.knotty.twitter.user.tweet.model.Tweet;
@@ -19,9 +20,9 @@ public class TweetDeleteUseCaseFacade implements TweetDeleteUseCase {
         UserProfile actor = currentUserProfileApiService.currentUserProfile();
         UserProfile curr = tweetService.findTweetById(tweetId)
                 .map(Tweet::getUserProfile)
-                .orElseThrow(() -> new RuntimeException("твіт з id %s не існує".formatted(tweetId)));
+                .orElseThrow(() -> new TwitterException("твіт з id %s не існує".formatted(tweetId)));
         if (!curr.equals(actor)) {
-            throw new RuntimeException("видалення твіта з id %s заборонено, користувач %s не є його власником".formatted(tweetId,
+            throw new TwitterException("видалення твіта з id %s заборонено, користувач %s не є його власником".formatted(tweetId,
                     actor.getNickname()));
         }
         tweetService.deleteTweet(tweetId);

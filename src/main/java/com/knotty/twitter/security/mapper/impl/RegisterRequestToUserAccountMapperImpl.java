@@ -1,5 +1,6 @@
 package com.knotty.twitter.security.mapper.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.security.mapper.RegisterRequestToUserAccountMapper;
 import com.knotty.twitter.security.model.UserAccount;
 import com.knotty.twitter.security.model.UserRole;
@@ -23,7 +24,7 @@ public class RegisterRequestToUserAccountMapperImpl implements RegisterRequestTo
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(registerRequest.username().toLowerCase(Locale.ROOT));
         userAccount.setPassword(this.passwordEncoder.encode(registerRequest.password()));
-        UserRole roleUserNotFound = this.userRoleService.findUserRole().orElseThrow(() -> new RuntimeException("Role user not found"));
+        UserRole roleUserNotFound = this.userRoleService.findUserRole().orElseThrow(() -> new TwitterException("Role user not found"));
         userAccount.setUserRoles(Set.of(roleUserNotFound));
         return userAccount;
     }

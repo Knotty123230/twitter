@@ -37,7 +37,6 @@ public class TweetServiceImpl implements TweetService {
     }
 
 
-
     @Override
     public Page<Tweet> findAllTweets(UserProfile userProfile, Pageable pageable) {
         return tweetRepository.findAllByUserProfile(userProfile, pageable);

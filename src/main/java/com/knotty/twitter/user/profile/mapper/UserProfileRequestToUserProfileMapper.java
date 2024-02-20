@@ -1,6 +1,6 @@
 package com.knotty.twitter.user.profile.mapper;
 
-import com.knotty.twitter.security.mapper.Mapper;
+import com.knotty.twitter.common.Mapper;
 import com.knotty.twitter.user.profile.model.UserProfile;
 import com.knotty.twitter.user.profile.web.dto.UserProfileRequest;
 

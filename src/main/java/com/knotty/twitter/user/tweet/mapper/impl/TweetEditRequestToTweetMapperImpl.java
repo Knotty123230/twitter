@@ -1,5 +1,6 @@
 package com.knotty.twitter.user.tweet.mapper.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.user.tweet.mapper.TweetEditRequestToTweetMapper;
 import com.knotty.twitter.user.tweet.model.Tweet;
 import com.knotty.twitter.user.tweet.service.TweetService;
@@ -15,7 +16,7 @@ public class TweetEditRequestToTweetMapperImpl implements TweetEditRequestToTwee
     @Override
     public Tweet map(TweetEditRequest source) {
         Tweet curr = this.tweetService.findTweetById(source.id())
-                .orElseThrow(() -> new RuntimeException("твіт за id %s не інстує".formatted(source.id())));
+                .orElseThrow(() -> new TwitterException("твіт за id %s не інстує".formatted(source.id())));
         curr.setMessage(source.message());
         return curr;
     }

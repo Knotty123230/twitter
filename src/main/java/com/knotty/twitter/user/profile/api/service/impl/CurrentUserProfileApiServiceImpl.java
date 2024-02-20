@@ -1,5 +1,6 @@
 package com.knotty.twitter.user.profile.api.service.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.security.api.model.CurrentUserApiModel;
 import com.knotty.twitter.security.api.service.IdentityApiService;
 import com.knotty.twitter.user.profile.api.service.CurrentUserProfileApiService;
@@ -16,7 +17,7 @@ public class CurrentUserProfileApiServiceImpl implements CurrentUserProfileApiSe
 
     @Override
     public UserProfile currentUserProfile() {
-        CurrentUserApiModel currentUserApiModel = identityApiService.currentUserAccount().orElseThrow(() -> new RuntimeException("користувач повинен бути авторизований"));
+        CurrentUserApiModel currentUserApiModel = identityApiService.currentUserAccount().orElseThrow(() -> new TwitterException("користувач повинен бути авторизований"));
         return this.userProfileService.findUserProfileById(currentUserApiModel.userAccountId());
     }
 }

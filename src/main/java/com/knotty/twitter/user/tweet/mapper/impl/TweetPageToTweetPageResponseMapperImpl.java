@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TweetPageToTweetPageResponseMapperImpl implements TweetPageToTweetPageResponseMapper {
     private final TweetToTweetResponceMapper tweetToTweetResponceMapper;
+
     @Override
     public TweetPageResponse map(Page<Tweet> source) {
         List<TweetResponse> tweetResponses = source.stream()

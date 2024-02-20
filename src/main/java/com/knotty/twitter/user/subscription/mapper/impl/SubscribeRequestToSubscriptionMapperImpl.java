@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class SubscribeRequestToSubscriptionMapperImpl implements SubscribeRequestToSubscriptionMapper {
     private final CurrentUserProfileApiService currentUserProfileApiService;
     private final UserProfileApiService userProfileApiService;
+
     @Override
     public Subscription map(SubscribeRequest source) {
         Subscription subscription = new Subscription();

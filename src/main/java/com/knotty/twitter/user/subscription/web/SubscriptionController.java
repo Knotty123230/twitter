@@ -16,11 +16,12 @@ public class SubscriptionController {
     private final SubscriptionDeleteUseCase subscriptionDeleteUseCase;
 
     @PostMapping("/subscribe")
-    public void subscribe(@Valid @RequestBody SubscribeRequest subscribeRequest){
+    public void subscribe(@Valid @RequestBody SubscribeRequest subscribeRequest) {
         subscriptionAddUseCase.subscribe(subscribeRequest);
     }
+
     @DeleteMapping("/unsubscribe")
-    public void subscribe(@Valid @RequestBody UnsubscribeRequest unsubscribeRequest){
+    public void subscribe(@Valid @RequestBody UnsubscribeRequest unsubscribeRequest) {
         subscriptionDeleteUseCase.unsubscribe(unsubscribeRequest);
     }
 

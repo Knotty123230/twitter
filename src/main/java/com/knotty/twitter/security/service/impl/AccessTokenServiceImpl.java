@@ -1,5 +1,6 @@
 package com.knotty.twitter.security.service.impl;
 
+import com.knotty.twitter.common.TwitterException;
 import com.knotty.twitter.security.service.AccessTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,7 @@ public class AccessTokenServiceImpl implements AccessTokenService {
                 .filter(UserDetails.class::isInstance)
                 .map(UserDetails.class::cast)
                 .orElseThrow(() ->
-                        new RuntimeException("не вдалось сформувати об'єкт UserDetails з об'єкта Authentication"));
+                        new TwitterException("не вдалось сформувати об'єкт UserDetails з об'єкта Authentication"));
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

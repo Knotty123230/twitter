@@ -16,6 +16,7 @@ public class AuthenticationUseCaseFacade implements AuthenticationUseCase {
 
     private final AuthenticationManager authenticationManager;
     private final AccessTokenService accessTokenService;
+
     @Override
     public AccessToken authenticate(LoginRequest loginRequest) {
         Authentication authToken = new UsernamePasswordAuthenticationToken(loginRequest.username(), loginRequest.password());

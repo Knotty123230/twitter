@@ -17,8 +17,7 @@ public class RsaKeyConfig {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
             keyPairGenerator.initialize(2048);
             keyPair = keyPairGenerator.generateKeyPair();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             throw new IllegalStateException(ex);
         }
         return new RsaKeys((RSAPublicKey) keyPair.getPublic(), (RSAPrivateKey) keyPair.getPrivate());

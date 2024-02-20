@@ -17,7 +17,7 @@ public class AuthenticationController {
     private final AuthenticationUseCase authenticationUseCase;
 
     @PostMapping("/access_token")
-    public AccessToken getToken(@Valid @RequestBody LoginRequest loginRequest){
+    public AccessToken getToken(@Valid @RequestBody LoginRequest loginRequest) {
         return authenticationUseCase.authenticate(loginRequest);
     }
 }

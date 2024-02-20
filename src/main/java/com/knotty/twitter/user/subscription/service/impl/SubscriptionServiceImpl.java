@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SubscriptionServiceImpl implements SubscriptionService {
     private final SubscriptionRepository subscriptionRepository;
+
     @Override
     public void createSubscribe(Subscription subscription) {
         subscriptionRepository.save(subscription);
