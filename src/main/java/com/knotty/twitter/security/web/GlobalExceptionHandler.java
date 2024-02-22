@@ -1,6 +1,5 @@
 package com.knotty.twitter.security.web;
 
-import com.knotty.twitter.common.exception.TwitterException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.validation.BindingResult;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({TwitterException.class})
-    public ProblemDetail handleRuntimeErrors(TwitterException ex) {
+    @ExceptionHandler({RuntimeException.class})
+    public ProblemDetail handleRuntimeErrors(RuntimeException ex) {
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 

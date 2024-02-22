@@ -21,7 +21,5 @@ public class IdentityApiServiceImpl implements IdentityApiService {
                 .map(Principal::getName)
                 .flatMap(this.accountService::findUserByUsername)
                 .map(it -> new CurrentUserApiModel(it.getId()));
-
-
     }
 }

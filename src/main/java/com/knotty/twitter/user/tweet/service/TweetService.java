@@ -17,4 +17,8 @@ public interface TweetService {
     void deleteTweet(Long tweetId);
 
     Page<Tweet> findAllTweets(UserProfile userProfile, Pageable pageable);
+
+    Page<Tweet> findAllFollowerTweets(UserProfile follower, Pageable pageable);
+
+
 }

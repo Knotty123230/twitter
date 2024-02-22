@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: load-famous-quotes
+      author: VitaliyTaranenko
+      changes:
+        - loadData:
+            schemaName: public
+            tableName: famous_quotes
+            columns:
+              - column:
+                  name: quote
+                  type: varchar
+            file: data/famous_quotes.csv
+            encoding: UTF-8
+            separator: ;
+            usePreparedStatements: true
+            relativeToChangelogFile: true

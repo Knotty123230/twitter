@@ -18,9 +18,11 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+
+    @ManyToOne
     private UserProfile follower;
-    @OneToOne
+
+    @ManyToOne
     private UserProfile followed;
     @CreatedDate
     @Column(nullable = false, updatable = false)

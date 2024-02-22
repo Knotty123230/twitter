@@ -1,11 +1,11 @@
 package com.knotty.twitter.user.profile.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.knotty.twitter.user.subscription.model.Subscription;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +18,9 @@ public class UserProfile {
     private String nickname;
     @Column(nullable = false)
     private String imageLink;
+    @OneToMany
+    @JoinColumn(name = "followed_id", referencedColumnName = "id")
+    private List<Subscription> followers;
 
     public UserProfile(String nickname, String imageLink) {
         this.nickname = nickname;

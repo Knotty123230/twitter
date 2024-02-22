@@ -17,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserAccountToUserMapper userMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String username)  {
+    public UserDetails loadUserByUsername(String username) {
         return this.userAccountService.findUserByUsername(username)
                 .map(this.userMapper::map)
                 .orElseThrow(() -> new UsernameNotFoundException("bad credentials"));

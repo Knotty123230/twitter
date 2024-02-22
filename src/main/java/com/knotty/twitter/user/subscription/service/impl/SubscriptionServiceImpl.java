@@ -1,10 +1,13 @@
 package com.knotty.twitter.user.subscription.service.impl;
 
 import com.knotty.twitter.user.profile.model.UserProfile;
+import com.knotty.twitter.user.subscription.model.FollowerSubscription;
 import com.knotty.twitter.user.subscription.model.Subscription;
 import com.knotty.twitter.user.subscription.repository.SubscriptionRepository;
 import com.knotty.twitter.user.subscription.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,5 +31,11 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public boolean existsSubscription(Subscription subscription) {
         return this.subscriptionRepository.existsByFollowerAndFollowed(subscription.getFollower(), subscription.getFollowed());
+    }
+
+    @Override
+    public Page<FollowerSubscription> findAllFollowersSubscriptions(UserProfile currentUserProfile, Pageable pageable) {
+
+        return this.subscriptionRepository.findAllByFollowed(currentUserProfile, pageable);
     }
 }

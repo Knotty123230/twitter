@@ -37,11 +37,11 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(https ->
-                        https.requestMatchers("/api/v1/accounts/register", "/error", "api/v1/authentication/access_token").permitAll()
-                                .requestMatchers("/api/v1/demo/just-auth").authenticated()
-                                .requestMatchers("/api/v1/demo/just-role-user").hasRole("USER")
-                                .requestMatchers("/api/v1/demo/just-role-admin").hasRole("ADMIN")
-
+                        https.requestMatchers("/api/v1/accounts/register",
+                                        "/error",
+                                        "api/v1/authentication/access_token",
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated())
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .oauth2ResourceServer(oauth -> oauth.jwt(jwt -> jwt.decoder(jwtDecoder())));

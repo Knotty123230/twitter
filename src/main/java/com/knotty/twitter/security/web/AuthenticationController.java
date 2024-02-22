@@ -3,6 +3,7 @@ package com.knotty.twitter.security.web;
 import com.knotty.twitter.security.usecase.AuthenticationUseCase;
 import com.knotty.twitter.security.web.dto.AccessToken;
 import com.knotty.twitter.security.web.dto.LoginRequest;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ public class AuthenticationController {
     private final AuthenticationUseCase authenticationUseCase;
 
     @PostMapping("/access_token")
+    @Operation(summary = "authorization user by his credentials", tags = "authorization")
     public AccessToken getToken(@Valid @RequestBody LoginRequest loginRequest) {
         return authenticationUseCase.authenticate(loginRequest);
     }
