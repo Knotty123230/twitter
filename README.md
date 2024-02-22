@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Twitter Project README</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        p, li {
-            color: #666;
-            line-height: 1.6;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 4px;
-            border-radius: 4px;
-            font-family: monospace;
-        }
-    </style>
-</head>
+
 <body>
 
 <h1>Twitter Project README</h1>
