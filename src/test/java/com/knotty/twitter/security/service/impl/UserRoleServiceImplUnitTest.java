@@ -23,7 +23,7 @@ class UserRoleServiceImplUnitTest {
     UserRoleServiceImpl userRoleService;
 
     @Test
-    void shouldSuccessfullyFindUserRole(){
+    void shouldSuccessfullyFindUserRole() {
 
         UserRole userRole = new UserRole();
         userRole.setAuthority("ROLE_USER");
@@ -37,7 +37,7 @@ class UserRoleServiceImplUnitTest {
     }
 
     @Test
-    void shouldUnSuccessfullyFindUserRole(){
+    void shouldUnSuccessfullyFindUserRole() {
         UserRole userRole = new UserRole();
         userRole.setAuthority("ROLE_USER");
         Mockito.when(this.userRoleRepository.findByAuthority(userRole.getAuthority())).thenReturn(Optional.empty());

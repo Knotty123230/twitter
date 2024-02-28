@@ -17,7 +17,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import java.util.Collections;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
@@ -67,7 +68,7 @@ class UserDetailsServiceImplUnitTest {
         // Mocking behavior
         Mockito.when(userAccountService.findUserByUsername(userAccount.getUsername()))
                 .thenReturn(Optional.empty());
-            String username = userAccount.getUsername();
+        String username = userAccount.getUsername();
         try {
             userDetailsService.loadUserByUsername(username);
             fail("Expected UsernameNotFoundException to be thrown");

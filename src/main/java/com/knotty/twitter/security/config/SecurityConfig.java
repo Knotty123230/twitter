@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(https ->
                         https.requestMatchers("/api/v1/accounts/register",
                                         "/error",
-                                        "api/v1/authentication/access_token",
+                                        "/api/v1/authentication/access_token",
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**").permitAll()
                                 .anyRequest().authenticated())

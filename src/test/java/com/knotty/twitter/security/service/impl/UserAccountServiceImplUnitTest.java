@@ -15,7 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +28,7 @@ class UserAccountServiceImplUnitTest {
 
 
     @Test
-    void shouldThrowTwitterException(){
+    void shouldThrowTwitterException() {
 
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername("user@gmail.com");
@@ -43,8 +44,9 @@ class UserAccountServiceImplUnitTest {
         Mockito.verify(userAccountRepository, Mockito.times(1)).existsByUsername(any());
 
     }
+
     @Test
-    void shouldCreateUserAccountSuccessfully(){
+    void shouldCreateUserAccountSuccessfully() {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername("user@gmail.com");
         userAccount.setPassword("password");
@@ -61,7 +63,7 @@ class UserAccountServiceImplUnitTest {
     }
 
     @Test
-    void shouldSuccessfullyFindByUsername(){
+    void shouldSuccessfullyFindByUsername() {
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername("user@gmail.com");
         userAccount.setPassword("password");
@@ -75,7 +77,7 @@ class UserAccountServiceImplUnitTest {
 
         Optional<UserAccount> byUsername = this.userAccountService.findUserByUsername(username);
 
-        assertEquals(Optional.of(userAccount) , byUsername);
+        assertEquals(Optional.of(userAccount), byUsername);
 
         Mockito.verify(userAccountRepository, Mockito.times(1)).findByUsername(any());
 

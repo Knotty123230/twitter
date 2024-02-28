@@ -1,6 +1,5 @@
 package com.knotty.twitter.security.web;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.knotty.twitter.security.usecase.RegisterUserAccountUseCase;
 import com.knotty.twitter.security.web.dto.RegisterRequest;
@@ -25,11 +24,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 class UserAccountControllerUnitTest {
+    MockMvc mockMvc;
     @InjectMocks
     private UserAccountController controller;
     @Mock
     private RegisterUserAccountUseCase registerUserAccountUseCase;
-    MockMvc mockMvc;
 
     @BeforeEach
     void setup() {
